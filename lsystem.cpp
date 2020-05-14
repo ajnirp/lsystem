@@ -17,6 +17,8 @@
 
 using namespace std;
 
+typedef unsigned char uchar;
+
 // Globals
 int g_window;
 string g_draw_data;
@@ -68,7 +70,20 @@ L_system barnsley_fern() {
 }
 
 // Coordinate system explanation: (0, 0) is the window centre. (1, 1) is the top right corner.
+void draw_background_gradient(uchar r, uchar g, uchar b) {
+    glBegin(GL_QUADS);
+    glColor3ub(r, g, b);
+    glVertex2f(-1.f, -1.f);
+    glVertex2f( 1.f, -1.f);
+    glColor3ub(255, 255, 255);
+    glVertex2f( 1.f,  1.f);
+    glVertex2f(-1.f,  1.f);
+    glEnd();
+}
+
 void draw_fractal_tree() {
+    draw_background_gradient(95, 196, 232);
+
     glColor3f(0.f, 0.f, 0.f);
 
     point p = { 0.f, -0.9 };
@@ -98,6 +113,8 @@ void draw_fractal_tree() {
 }
 
 void draw_barnsley_fern() {
+    draw_background_gradient(138, 237, 164);
+
     glColor3f(0.f, 0.f, 0.f);
 
     point p = { -0.7f, -0.9 };
