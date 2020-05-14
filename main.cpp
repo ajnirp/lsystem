@@ -1,6 +1,6 @@
 // Build: g++ barnsley.cpp -lGL -lGLU -lglut
 // Run: ./lsystem
-// Hit <esc> to exit. B and F to toggle between Barnsley fern and Fractal tree.
+// Hit <esc> to exit. Use the left and right arrow keys to switch between L-systems.
 
 #include <GL/gl.h>
 #include <GL/glut.h>
