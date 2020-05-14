@@ -1,6 +1,6 @@
 ### About
 
-Messing around with L-systems. A lot of the code was taken from my [iterative Koch curve implementation](https://github.com/ajnirp/koch).
+Messing around with L-systems. A lot of the rendering code was taken from my [iterative Koch curve implementation](https://github.com/ajnirp/koch).
 
 ### Build
 
