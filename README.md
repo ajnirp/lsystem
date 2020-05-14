@@ -19,3 +19,4 @@ Run `make clean`
 
 ![Fractal tree output](screenshots/fractal_tree.png)
 ![Barnsley fern output](screenshots/barnsley_fern.png)
+![Sierpinski triangle output](screenshots/sierpinski_triangle.png)
