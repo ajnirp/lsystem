@@ -16,8 +16,6 @@
 
 #define WINDOW_SIZE 1000
 
-using namespace std;
-
 typedef unsigned char uchar;
 
 // Globals begin
