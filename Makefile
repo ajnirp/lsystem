@@ -1,7 +1,7 @@
 all: lsystem
 
-lsystem: lsystem.cpp draw.h util.h types.h
-	g++ draw.h util.h types.h lsystem.cpp -Wall -O3 -lGL -lGLU -lglut -o lsystem
+lsystem: main.cpp util.h systems.h
+	g++ util.h systems.h main.cpp -Wall -O3 -lGL -lGLU -lglut -o lsystem
 
 clean:
 	rm -f lsystem
