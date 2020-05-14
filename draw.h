@@ -31,7 +31,7 @@ void draw_fractal_tree() {
 
     glColor3f(0.f, 0.f, 0.f);
 
-    point p = { 0.f, -0.9 };
+    point p = { 0.0, -0.9 };
     const float k_delta_angle = M_PI / 4.0;
     float angle = M_PI / 2.0;
     const double k_segment_len = 0.0075;
@@ -62,7 +62,7 @@ void draw_barnsley_fern() {
 
     glColor3f(0.f, 0.f, 0.f);
 
-    point p = { -0.7f, -0.9 };
+    point p = { -0.7, -0.9 };
     const float k_delta_angle = 25 * M_PI / 180.0;
     float angle = (M_PI / 2.0) - k_delta_angle;
     const double k_segment_len = 0.0125f;
@@ -96,7 +96,7 @@ void draw_sierpinski_triangle() {
 
     glColor3f(0.f, 0.f, 0.f);
 
-    point p = { -0.95f, -0.9 };
+    point p = { -0.95, -0.9 };
     const float k_delta_angle = -M_PI / 3.0;
     float angle = 0;
     const double k_segment_len = 0.015f;
@@ -115,6 +115,32 @@ void draw_sierpinski_triangle() {
             angle -= k_delta_angle;
         }
     }   
+}
+
+void draw_hexagonal_gosper_curve() {
+    draw_background_gradient(201, 131, 242);
+
+    glColor3f(0.f, 0.f, 0.f);
+
+    point p = { 0.3, 0.7 };
+    const float k_delta_angle = -M_PI / 3.0;
+    float angle = 0;
+    const double k_segment_len = 0.03f;
+
+    for (auto c : g_draw_data) {
+        if (c == 'A' or c == 'B') {
+            const point dp = { cos(angle) * k_segment_len, sin(angle) * k_segment_len };
+            glBegin(GL_LINES);
+            glVertex2f(p.x, p.y);
+            glVertex2f(p.x + dp.x, p.y + dp.y);
+            glEnd();
+            p += dp;
+        } else if (c == '+') {
+            angle += k_delta_angle;
+        } else if (c == '-') {
+            angle -= k_delta_angle;
+        }
+    }
 }
 
 #endif
