@@ -163,13 +163,13 @@ void display() {
     glFlush();
 }
 
-void keyboard(unsigned char key, int x, int y) {
+void keyboard(uchar key, int x, int y) {
     if (key == 27) {
         glutDestroyWindow(g_window);
-    } else if (key == 'b') {
+    } else if (key == 'b' and g_active_fractal != 'b') {
         g_active_fractal = 'b';
         glutPostRedisplay();
-    } else if (key == 'f') {
+    } else if (key == 'f' and g_active_fractal != 'f') {
         g_active_fractal = 'f';
         glutPostRedisplay();
     }
