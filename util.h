@@ -22,4 +22,12 @@ L_system barnsley_fern() {
     return {.axiom='X', .rules=rules, .contents="X"};
 }
 
+L_system sierpinski_triangle() {
+    std::unordered_map<char, std::string> rules = {
+        {'A', "B-A-B"},
+        {'B', "A+B+A"}
+    };
+    return {.axiom='A', .rules=rules, .contents="A"};
+}
+
 #endif

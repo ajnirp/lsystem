@@ -21,18 +21,22 @@ typedef unsigned char uchar;
 int g_window;
 std::string g_draw_data;
 char g_active_fractal;
-L_system g_fractal_t;
-L_system g_barnsley;
+L_system g_fractal_tree;
+L_system g_barnsley_fern;
+L_system g_sierpinski_triangle;
 
 void display() {
     glClearColor(1.f, 1.f, 1.f, 1.f);
     glClear(GL_COLOR_BUFFER_BIT);
     if (g_active_fractal == 'f') {
-        g_draw_data = g_fractal_t.contents;
+        g_draw_data = g_fractal_tree.contents;
         draw_fractal_tree();
     } else if (g_active_fractal == 'b') {
-        g_draw_data = g_barnsley.contents;
+        g_draw_data = g_barnsley_fern.contents;
         draw_barnsley_fern();
+    } else if (g_active_fractal == 's') {
+        g_draw_data = g_sierpinski_triangle.contents;
+        draw_sierpinski_triangle();
     }
     glFlush();
 }
@@ -46,17 +50,23 @@ void keyboard(uchar key, int x, int y) {
     } else if (key == 'f' and g_active_fractal != 'f') {
         g_active_fractal = 'f';
         glutPostRedisplay();
+    } else if (key == 's' and g_active_fractal != 's') {
+        g_active_fractal = 's';
+        glutPostRedisplay();
     }
 }
 
 void init() {
     g_active_fractal = 'f';
 
-    g_fractal_t = fractal_tree();
-    g_fractal_t.iterate(8);
+    g_fractal_tree = fractal_tree();
+    g_fractal_tree.iterate(8);
 
-    g_barnsley = barnsley_fern();
-    g_barnsley.iterate(6);
+    g_barnsley_fern = barnsley_fern();
+    g_barnsley_fern.iterate(6);
+
+    g_sierpinski_triangle = sierpinski_triangle();
+    g_sierpinski_triangle.iterate(7);
 }
 
 int main(int argc, char** argv) {

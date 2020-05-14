@@ -1,6 +1,7 @@
 #ifndef DRAW_H
 #define DRAW_H
 
+#include <cmath>
 #include <stack>
 #include <utility>
 
@@ -88,6 +89,32 @@ void draw_barnsley_fern() {
             angle -= k_delta_angle;
         }
     }
+}
+
+void draw_sierpinski_triangle() {
+    draw_background_gradient(250, 149, 77);
+
+    glColor3f(0.f, 0.f, 0.f);
+
+    point p = { -0.95f, -0.9 };
+    const float k_delta_angle = -M_PI / 3.0;
+    float angle = 0;
+    const double k_segment_len = 0.015f;
+
+    for (auto c : g_draw_data) {
+        if (c == 'A' or c == 'B') {
+            const point dp = { cos(angle) * k_segment_len, sin(angle) * k_segment_len };
+            glBegin(GL_LINES);
+            glVertex2f(p.x, p.y);
+            glVertex2f(p.x + dp.x, p.y + dp.y);
+            glEnd();
+            p += dp;
+        } else if (c == '+') {
+            angle += k_delta_angle;
+        } else if (c == '-') {
+            angle -= k_delta_angle;
+        }
+    }   
 }
 
 #endif
